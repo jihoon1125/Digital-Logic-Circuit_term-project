@@ -1,0 +1,8 @@
+module mux2(a,b,sel,d);
+	input a,b,sel;
+	output d;
+	
+	assign d = (sel==0)? a : b;
+	
+endmodule
+

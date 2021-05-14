@@ -1,0 +1,125 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'Clk'
+Slack : -9.954
+TNS   : -6750.236
+
+Type  : Slow Model Setup 'M_grant'
+Slack : -9.505
+TNS   : -80.452
+
+Type  : Slow Model Setup 'fifo:src_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -5.777
+TNS   : -29.688
+
+Type  : Slow Model Setup 'fifo:data_size_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -5.526
+TNS   : -30.184
+
+Type  : Slow Model Setup 'fifo:dest_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -4.853
+TNS   : -24.892
+
+Type  : Slow Model Hold 'fifo:dest_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -4.122
+TNS   : -21.726
+
+Type  : Slow Model Hold 'fifo:src_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -3.962
+TNS   : -19.359
+
+Type  : Slow Model Hold 'fifo:data_size_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -3.088
+TNS   : -15.034
+
+Type  : Slow Model Hold 'M_grant'
+Slack : -2.856
+TNS   : -20.719
+
+Type  : Slow Model Hold 'Clk'
+Slack : -1.899
+TNS   : -399.078
+
+Type  : Slow Model Minimum Pulse Width 'Clk'
+Slack : -1.380
+TNS   : -1183.380
+
+Type  : Slow Model Minimum Pulse Width 'M_grant'
+Slack : -1.222
+TNS   : -27.610
+
+Type  : Slow Model Minimum Pulse Width 'fifo:data_size_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'fifo:dest_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'fifo:src_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Setup 'Clk'
+Slack : -3.837
+TNS   : -2257.594
+
+Type  : Fast Model Setup 'M_grant'
+Slack : -3.754
+TNS   : -32.365
+
+Type  : Fast Model Setup 'fifo:src_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -1.963
+TNS   : -9.259
+
+Type  : Fast Model Setup 'fifo:data_size_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -1.858
+TNS   : -9.830
+
+Type  : Fast Model Setup 'fifo:dest_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -1.493
+TNS   : -6.984
+
+Type  : Fast Model Hold 'fifo:dest_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -2.330
+TNS   : -12.522
+
+Type  : Fast Model Hold 'fifo:src_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -2.269
+TNS   : -11.386
+
+Type  : Fast Model Hold 'fifo:data_size_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -1.765
+TNS   : -8.961
+
+Type  : Fast Model Hold 'Clk'
+Slack : -1.131
+TNS   : -589.837
+
+Type  : Fast Model Hold 'M_grant'
+Slack : -1.093
+TNS   : -7.578
+
+Type  : Fast Model Minimum Pulse Width 'Clk'
+Slack : -1.380
+TNS   : -1183.380
+
+Type  : Fast Model Minimum Pulse Width 'M_grant'
+Slack : -1.222
+TNS   : -4.660
+
+Type  : Fast Model Minimum Pulse Width 'fifo:data_size_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'fifo:dest_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'fifo:src_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+------------------------------------------------------------

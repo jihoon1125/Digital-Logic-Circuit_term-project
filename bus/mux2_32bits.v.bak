@@ -1,0 +1,11 @@
+module mux2_32bits(a,b,sel,d);
+
+	input [31:0] a,b;
+	input sel;
+	output [31:0] d;
+	
+	assign d = (sel==0)? a : b;
+	
+	endmodule
+	
+	

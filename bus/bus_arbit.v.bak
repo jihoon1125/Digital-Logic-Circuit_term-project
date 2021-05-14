@@ -1,0 +1,19 @@
+module bus_arbit(clk, reset_n, M0_req, M1_req, M0_grt, M1_grt, Msel);
+
+	input clk, reset_n, M0_req, M1_req;
+	output M0_grt, M1_grt, Msel;
+	
+	reg M0_grt, M1_grt, Msel;
+	reg state, next_state;
+	
+	parameter M0grant=1'b0;
+	parameter M1grant=1'b1;
+
+	always @ (posedge clk or negedge reset_n) begin
+		if(reset_n==0) begin M0_grt<=1; M1_grt<=0; Msel<=0;
+							end
+		else 				begin M0_grt<=n_M0_grt; M1_grt<=n_M1_grt; Msel<=n_Msel;
+		end
+		
+	always @ (negedge reset_n, M0_req, M1_req) begin
+		if(reset_n==0) state

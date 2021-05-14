@@ -1,0 +1,193 @@
+module multiplier(clk, reset_n, op_start, op_clear, mtplicand, mtplier, op_done, result,
+						count, u_v, next_count, state, next_state);//multiplier top module
+
+	input clk, reset_n, op_start, op_clear;//input ports
+	input [31:0] mtplicand, mtplier;//multiplicand, multiplier
+	output reg [63:0] result;//result	
+	output reg op_done;//op_done	
+	reg next_op_done;
+	//test reg output 
+	output reg [31:0] count;//shift count	
+	output reg [31:0] next_count;//next_shift_count
+			
+	reg [31:0] next_X1, X1;//X1 and next_X1
+	reg  next_X0, X0;//X0 and next_X0
+	output reg [63:0] u_v;
+	reg [63:0]	next_u_v;//u_v and next_u_v
+	
+	output reg[1:0] state, next_state;//state and next_state
+	
+	wire [31:0] u_v_add, u_v_sub, mtp_double, u_v_double_add, u_v_double_sub;//u_v addition and subtraction wire
+		wire [31:0] add_count;
+			
+	//state parameter		
+	parameter IDLE = 2'b00;
+	parameter EXEC = 2'b01;
+	parameter DONE = 2'b10;
+	
+	always @ (posedge clk or negedge reset_n) begin//state, X1, X0, u_v, count sequential logic
+		if(reset_n==0) state<=IDLE;							
+		else 				begin								
+								state<=next_state;	
+								X1<=next_X1;
+								X0<=next_X0;
+								u_v<=next_u_v;
+								count<=next_count;
+								op_done<=next_op_done;								
+							end						
+	end
+	
+	always @ (state, op_start, op_clear, op_done) begin// next_state sequential logic
+		case(state)
+		IDLE : begin//IDLE state
+				 if(op_start==1) next_state<=EXEC;
+				 else next_state<=IDLE;
+				 end	
+		EXEC : begin //EXEC state
+						if(op_done==0) next_state<=EXEC;
+						else next_state<=DONE;
+				 end
+		DONE : begin//DONE state
+				if(op_clear==1) next_state<=IDLE;
+				else 				 next_state<=DONE;
+				end
+		default: next_state<=2'bx;//default
+		endcase
+	end
+		
+		
+	always	@ (state, mtplier,  X1, X0, count, u_v,
+					add_count, u_v_add, u_v_sub, u_v_double_add, u_v_double_sub, op_done)	begin//state combinational logic
+		case(state)
+		IDLE : begin//IDLE state
+				 next_X1<=mtplier;//update next_X1 as multiplier
+				 next_X0<=1'b0;//initialize next_X0, next_count, next_u_v
+				 next_count<=32'h00000000;
+				 next_u_v<=64'h0000000000000000;	
+				 next_op_done<=0;
+				 result<=64'h0000000000000000;
+				 end
+		EXEC :	begin	
+				case({X1[1], X1[0], X0})//EXEC state
+					{1'b0, 1'b0, 1'b0} : begin //double shift only
+													if(count!=32'h00000003)	begin
+														next_u_v[63]<=u_v[63];
+														next_u_v[62]<=u_v[63];
+														next_u_v[61:0]<=u_v[63:2];  
+														next_X0<=X1[1];
+														next_X1[29:0]<=X1[31:2];
+														next_X1[31:30]<=X1[1:0];
+														next_count<=add_count;							
+														end
+													else  begin
+														next_u_v[37:0]<=u_v[63:26];
+														if(u_v[63]==1'b1)	next_u_v[63:38]<={24'hffffff,2'b11};
+														else			next_u_v[63:38]<={24'h000000, 2'b00};
+														next_X1<=X1;
+														next_X0<=X0;
+														next_count<=count;
+														end																											
+													end
+												
+					{1'b0, 1'b0, 1'b1} : begin // +A and double shift
+												next_u_v[63]<=u_v_add[31];
+												next_u_v[62]<=u_v_add[31];
+												next_u_v[61:30]<=u_v_add;
+												next_u_v[29:0]<=u_v[31:2];	
+												next_X0<=X1[1];
+												next_X1[29:0]<=X1[31:2];
+												next_X1[31:30]<=X1[1:0];
+												next_count<=add_count;
+												end										
+					{1'b0, 1'b1, 1'b0} : begin // +A and double shift
+												next_u_v[63]<=u_v_add[31];
+												next_u_v[62]<=u_v_add[31];
+												next_u_v[61:30]<=u_v_add;
+												next_u_v[29:0]<=u_v[31:2];	
+												next_X0<=X1[1];
+												next_X1[29:0]<=X1[31:2];
+												next_X1[31:30]<=X1[1:0];
+												next_count<=add_count;
+												end						
+					{1'b0, 1'b1, 1'b1} : begin // +2A and double shift
+												next_u_v[63]<=u_v_double_add[31];
+												next_u_v[62]<=u_v_double_add[31];
+												next_u_v[61:30]<=u_v_double_add;
+												next_u_v[29:0]<=u_v[31:2];	
+												next_X0<=X1[1];
+												next_X1[29:0]<=X1[31:2];
+												next_X1[31:30]<=X1[1:0];
+												next_count<=add_count;
+												end
+					{1'b1, 1'b0, 1'b0} : begin // -2A and double shift
+												next_u_v[63]<=u_v_double_sub[31];
+												next_u_v[62]<=u_v_double_sub[31];
+												next_u_v[61:30]<=u_v_double_sub;
+												next_u_v[29:0]<=u_v[31:2];	
+												next_X0<=X1[1];
+												next_X1[29:0]<=X1[31:2];
+												next_X1[31:30]<=X1[1:0];
+												next_count<=add_count;
+												end
+					{1'b1, 1'b0, 1'b1} : begin // -A and double shift
+												next_u_v[63]<=u_v_sub[31];
+												next_u_v[62]<=u_v_sub[31];
+												next_u_v[61:30]<=u_v_sub;
+												next_u_v[29:0]<=u_v[31:2];	
+												next_X0<=X1[1];
+												next_X1[29:0]<=X1[31:2];
+												next_X1[31:30]<=X1[1:0];
+												next_count<=add_count;
+												end
+					{1'b1, 1'b1, 1'b0} : begin // -A and double shift
+												next_u_v[63]<=u_v_sub[31];
+												next_u_v[62]<=u_v_sub[31];
+												next_u_v[61:30]<=u_v_sub;
+												next_u_v[29:0]<=u_v[31:2];	
+												next_X0<=X1[1];
+												next_X1[29:0]<=X1[31:2];
+												next_X1[31:30]<=X1[1:0];
+												next_count<=add_count;
+												end	
+					{1'b1, 1'b1, 1'b1} : begin //double shift only
+												next_u_v[61:0]<=u_v[63:2];  
+												next_X0<=X1[1];
+												next_X1[29:0]<=X1[31:2];
+												next_X1[31:30]<=X1[1:0];
+												next_count<=add_count;						
+												end										
+						default 	 : u_v<=64'bx;	//default								
+					endcase//endcase
+					
+					if(count==32'h00000003) next_op_done<=1;	//op_done condition
+					else 						next_op_done<=0;
+					
+					if(op_done==1'b1)  result<=u_v;
+					else result<=64'h0000000000000000;
+					end					
+					
+		DONE : 	begin//DONE state						
+						next_op_done<=0;
+					end
+		
+		default: u_v<=64'bx;//default
+		endcase//endcase
+		end	
+		
+		
+cla32_ov	add_shift(.a(u_v[63:32]), .b(mtplicand), .ci(32'h00000000), .s(u_v_add));//adder instance to get u_v_add
+cla32_ov	sub_shift(.a(u_v[63:32]), .b(~mtplicand), .ci(32'h00000001), .s(u_v_sub));//subtractor instance to get u_v_sub
+cla32_ov	double_mtp(.a(mtplicand), .b(mtplicand), .ci(32'h00000000), .s(mtp_double));//double_add instance to get 2A
+cla32_ov	double_add_shift(.a(u_v[63:32]), .b(mtp_double), .ci(32'h00000000), .s(u_v_double_add));//adder instance to get u_v_double_add
+cla32_ov	double_sub_shift(.a(u_v[63:32]), .b(~mtp_double), .ci(32'h00000001), .s(u_v_double_sub));//subtractor instance	to get u_v_double_sub
+cla32_ov count_add(.a(count), .b(32'h00000001), .ci(32'h00000000), .s(add_count));// count addition
+		
+endmodule
+	
+	
+		
+				
+	
+	
+		
+		

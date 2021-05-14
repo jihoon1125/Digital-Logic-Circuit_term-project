@@ -1,0 +1,186 @@
+module master(clk,reset_n,M_req,M_address,M_wr,M_dout,M_grant,M_din,
+					  op_start, op_done, opdone_clear, rd_en, src_addr,dest_addr,data_size, data_count);
+					
+	input    	 clk, reset_n;
+	input    	 M_grant, op_start, opdone_clear;
+	input [31:0]  M_din;	
+	input [31:0]  src_addr, dest_addr, data_size;
+	input [3:0]  data_count; 
+	input [2:0]  op_mode;
+ 
+	output op_done, rd_en;
+ 	output reg  	  M_req, M_wr;
+ 	output reg [7:0]  M_address;
+	output reg [31:0] M_dout;		 
+ 
+ 	//state encoding
+ 	parameter  IDLE = 3'b000;
+ 	parameter  DONE = 3'b001;
+ 	parameter  FIFO_POP = 3'b010; 
+ 	parameter  BUS_REQUEST = 3'b011;
+ 	parameter  MEMORY_READ = 3'b100;
+ 	parameter  MEMORY_WRITE = 3'b101;
+
+	reg [2:0]  state, next_state;
+ 	reg [31:0]  r_src_addr, r_dest_addr, r_data_size;
+ 	reg [31:0]  next_src_addr, next_dest_addr, next_data_size;
+   
+ 
+	always@(posedge clk or negedge reset_n)
+ 	begin
+ 	 if(reset_n==0)   state <= IDLE;
+ 	 else  state <= next_state;
+   end
+
+	always@(state, op_start, opdone_clear, M_grant, next_data_size, data_count)
+ 	begin
+  		case(state)
+   	IDLE:		begin
+   	 				if(op_start==1'b1)  next_state <= FIFO_POP;
+   	 				else 				     next_state <= IDLE;   
+    	  			end   
+   
+  		FIFO_POP:	begin
+   						 if(next_data_size!=8'h00)     next_state <= BUS_REQUEST;   
+    	 					 else	 begin
+    					 				if(data_count>4'h0)    next_state <= FIFO_POP;
+     					 				else 					   next_state <= DONE;     
+             			 end
+						end
+						        
+   	BUS_REQUEST:	begin
+    							if(M_grant==1'b1)        next_state <= MEMORY_READ;
+    							else      next_state <= BUS_REQUEST;    							 
+   						end
+
+   	MEMORY_READ:   next_state <= MEMORY_WRITE;
+  
+	   MEMORY_WRITE:	begin
+    							if(next_data_size!=8'h00)     next_state <= MEMORY_READ;
+    							else if(data_count > 4'h0)    next_state <= FIFO_POP;
+     							else   next_state <= DONE;     																	  							
+  							end
+
+		DONE:	begin
+    				if(opdone_clear==1'b1)    next_state <= IDLE;
+    				else 							next_state <= DONE;
+       	   end
+   	default:        next_state <= 3'bxxx;  
+  		endcase 
+	 end
+	
+	assign op_done = (state==DONE)? 1'b1 : 1'b0;
+	
+	always@(posedge clk or negedge reset_n)
+ 		begin
+  			if(reset_n == 1'b0)  begin
+								   r_src_addr <= 8'h00;
+									r_dest_addr <=8'h00;
+									r_data_size <= 8'h00;
+								end
+  			else 					 begin
+								  r_src_addr <= next_src_addr;
+								  r_dest_addr <= next_dest_addr;
+								  r_data_size <= next_data_size;
+								end								  
+ 		end 
+
+	reg [31:0] op_r_src_addr, op_r_dest_addr; 
+	cla32_ov U1_cla32(.a(r_src_addr), .b(1'b1), .ci(0), .s(op_r_src_addr));
+	cla32_ov U2_cla32(.a(r_dest_addr), .b(1'b1), .ci(0), .s(op_r_dest_addr));
+	
+	always@(state, src_addr, r_src_addr)
+ 		begin
+ 		 case(state)
+  			 FIFO_POP:       	  next_src_addr <= src_addr;
+  			 BUS_REQUEST:       next_src_addr <= r_src_addr;
+  			 MEMORY_READ:       next_src_addr <= r_src_addr;
+  			 MEMORY_WRITE:      begin
+											if(op_mode[0]==1'b1) next_src_addr <= op_r_src_addr;
+											else 	next_src_addr <= r_src_addr;
+									  end
+  			 default:           next_src_addr <= 8'h00;
+  			 endcase
+ 		end
+
+	always@(state, dest_addr, r_dest_addr)
+ 		begin
+  			case(state)
+   			FIFO_POP:        begin
+											if(op_mode[2]==1'b1) next_dest_addr<=32'b0;
+											else next_dest_addr <= dest_addr;
+									  end
+   			BUS_REQUEST:     next_dest_addr <= r_dest_addr;
+   			MEMORY_READ:     next_dest_addr <= r_dset_addr;
+   			MEMORY_WRITE:    begin
+											if(op_mode[1]==1'b1) next_dest_addr <= op_r_dest_addr;
+											else next_src_addr <= r_dest_addr;
+   			default:         next_dest_addr <= 8'h00;
+  				endcase
+ 		end
+
+	reg [31:0] sub_data_size;
+	cla32_ov U0_cla32(.a(~(r_data_size)), .b(1'b1), .ci(0), .s(sub_data_size))
+	
+	always@(state, data_size, r_data_size)
+ 		begin
+  			case(state)
+  				FIFO_POP:       	next_data_size <= data_size;
+   			BUS_REQUEST:      next_data_size <= r_data_size;
+   			MEMORY_READ:      next_data_size <= sub_data_size;
+   			MEMORY_WRITE:     next_data_size <= r_data_size;
+   			default:        	next_data_size <= 8'h00;  
+  				endcase 
+ 		end
+
+	assign rd_en = (next_state==FIFP_POP)? 1'b1 : 1'b0;	
+	
+	
+	 
+ 	always@(state)
+ 		begin
+  			case(state)
+   			BUS_REQUEST: M_req <= 1'b1;
+   			MEMORY_READ:  M_req <= 1'b1;
+   			MEMORY_WRITE: M_req <= 1'b1;
+   				default:   M_req <= 1'b0; 
+  				endcase 
+ 		end
+ 
+ 
+ 
+ 	always@(state, r_src_addr, r_dest_addr)
+ 		begin
+  			case(state)
+   			MEMORY_READ: M_address <= r_src_addr;
+  			   MEMORY_WRITE: M_address <= r_dest_addr;
+   				default:   M_address <= 8'h00;  
+  			endcase
+ 		end
+  
+ 
+ 
+ 	always@(state)
+ 		begin
+ 	 		case(state)
+   			MEMORY_READ: M_wr <= 1'b0;
+   			MEMORY_WRITE: M_wr <= 1'b1;
+   				default:   M_wr <= 1'b0;  
+  			endcase 
+ 		end
+ 
+ 
+ 
+ 	always@(state, M_din)
+ 		begin
+  			case(state)
+  				MEMORY_WRITE:  M_dout <= M_din;
+   				default:   M_dout <= 8'h00;  
+  			endcase 
+ 		end
+ 
+endmodule 
+ 
+		
+		
+

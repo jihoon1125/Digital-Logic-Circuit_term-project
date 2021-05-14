@@ -1,0 +1,11 @@
+module mux2_8bits(a,b,sel,d);
+	input [7:0] a,b;
+	input sel;
+	output [7:0] d;
+	
+	assign d = (sel==0)? a : b;
+	
+	endmodule
+	
+	
+	

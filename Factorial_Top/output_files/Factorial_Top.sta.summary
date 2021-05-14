@@ -1,0 +1,197 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'multiplier:U0_multiplier|state[0]'
+Slack : -25.955
+TNS   : -1177.579
+
+Type  : Slow Model Setup 'multiplier:U0_multiplier|count[0]'
+Slack : -23.804
+TNS   : -881.089
+
+Type  : Slow Model Setup 'clk'
+Slack : -6.266
+TNS   : -5068.763
+
+Type  : Slow Model Setup 'fifo:N_FIFO|_dff3_r:state_dff3_r|_dff_r:U0_dff_r|q'
+Slack : -6.006
+TNS   : -17.407
+
+Type  : Slow Model Setup 'fifo:R_FIFO_2|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -4.861
+TNS   : -24.759
+
+Type  : Slow Model Setup 'fifo:R_FIFO_1|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -4.460
+TNS   : -25.276
+
+Type  : Slow Model Setup 'S_address[0]'
+Slack : -2.846
+TNS   : -14.319
+
+Type  : Slow Model Setup 'fifo:N_FIFO|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -0.876
+TNS   : -3.485
+
+Type  : Slow Model Hold 'multiplier:U0_multiplier|count[0]'
+Slack : -4.549
+TNS   : -513.100
+
+Type  : Slow Model Hold 'fifo:R_FIFO_2|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -4.105
+TNS   : -18.744
+
+Type  : Slow Model Hold 'fifo:R_FIFO_1|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -3.568
+TNS   : -19.223
+
+Type  : Slow Model Hold 'fifo:N_FIFO|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -3.351
+TNS   : -18.568
+
+Type  : Slow Model Hold 'S_address[0]'
+Slack : -2.900
+TNS   : -13.265
+
+Type  : Slow Model Hold 'multiplier:U0_multiplier|state[0]'
+Slack : -2.398
+TNS   : -146.267
+
+Type  : Slow Model Hold 'clk'
+Slack : -1.959
+TNS   : -429.479
+
+Type  : Slow Model Hold 'fifo:N_FIFO|_dff3_r:state_dff3_r|_dff_r:U0_dff_r|q'
+Slack : -1.700
+TNS   : -4.361
+
+Type  : Slow Model Minimum Pulse Width 'clk'
+Slack : -1.380
+TNS   : -1283.380
+
+Type  : Slow Model Minimum Pulse Width 'S_address[0]'
+Slack : -1.222
+TNS   : -10.966
+
+Type  : Slow Model Minimum Pulse Width 'fifo:N_FIFO|_dff3_r:state_dff3_r|_dff_r:U0_dff_r|q'
+Slack : -1.153
+TNS   : -20.690
+
+Type  : Slow Model Minimum Pulse Width 'fifo:N_FIFO|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'fifo:R_FIFO_1|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'fifo:R_FIFO_2|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'multiplier:U0_multiplier|count[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'multiplier:U0_multiplier|state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Setup 'multiplier:U0_multiplier|state[0]'
+Slack : -10.597
+TNS   : -422.681
+
+Type  : Fast Model Setup 'multiplier:U0_multiplier|count[0]'
+Slack : -9.684
+TNS   : -338.036
+
+Type  : Fast Model Setup 'fifo:N_FIFO|_dff3_r:state_dff3_r|_dff_r:U0_dff_r|q'
+Slack : -2.613
+TNS   : -7.587
+
+Type  : Fast Model Setup 'clk'
+Slack : -2.329
+TNS   : -1496.189
+
+Type  : Fast Model Setup 'fifo:R_FIFO_2|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -1.559
+TNS   : -7.038
+
+Type  : Fast Model Setup 'fifo:R_FIFO_1|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -1.357
+TNS   : -7.396
+
+Type  : Fast Model Setup 'S_address[0]'
+Slack : -1.090
+TNS   : -5.248
+
+Type  : Fast Model Setup 'fifo:N_FIFO|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.183
+TNS   : 0.000
+
+Type  : Fast Model Hold 'fifo:R_FIFO_2|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -2.332
+TNS   : -11.165
+
+Type  : Fast Model Hold 'multiplier:U0_multiplier|count[0]'
+Slack : -2.302
+TNS   : -267.806
+
+Type  : Fast Model Hold 'fifo:R_FIFO_1|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -2.073
+TNS   : -11.442
+
+Type  : Fast Model Hold 'fifo:N_FIFO|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -2.070
+TNS   : -11.538
+
+Type  : Fast Model Hold 'multiplier:U0_multiplier|state[0]'
+Slack : -1.389
+TNS   : -111.751
+
+Type  : Fast Model Hold 'clk'
+Slack : -1.345
+TNS   : -613.612
+
+Type  : Fast Model Hold 'S_address[0]'
+Slack : -1.120
+TNS   : -4.954
+
+Type  : Fast Model Hold 'fifo:N_FIFO|_dff3_r:state_dff3_r|_dff_r:U0_dff_r|q'
+Slack : -0.743
+TNS   : -1.866
+
+Type  : Fast Model Minimum Pulse Width 'clk'
+Slack : -1.380
+TNS   : -1283.380
+
+Type  : Fast Model Minimum Pulse Width 'S_address[0]'
+Slack : -1.222
+TNS   : -1.222
+
+Type  : Fast Model Minimum Pulse Width 'fifo:N_FIFO|_dff3_r:state_dff3_r|_dff_r:U0_dff_r|q'
+Slack : -0.182
+TNS   : -2.964
+
+Type  : Fast Model Minimum Pulse Width 'fifo:N_FIFO|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'fifo:R_FIFO_1|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'fifo:R_FIFO_2|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'multiplier:U0_multiplier|count[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'multiplier:U0_multiplier|state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+------------------------------------------------------------

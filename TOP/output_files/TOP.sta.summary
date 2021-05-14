@@ -1,0 +1,245 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'Factorial_Top:U1_FACT|multiplier:U0_multiplier|count[0]'
+Slack : -22.056
+TNS   : -882.654
+
+Type  : Slow Model Setup 'BUS:center_bus|bus_arbit:U0_arbit|state'
+Slack : -11.898
+TNS   : -137.974
+
+Type  : Slow Model Setup 'clk'
+Slack : -11.779
+TNS   : -26911.770
+
+Type  : Slow Model Setup 'Factorial_Top:U1_FACT|fifo:R_FIFO_2|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -5.561
+TNS   : -31.462
+
+Type  : Slow Model Setup 'Factorial_Top:U1_FACT|fifo:N_FIFO|_dff3_r:state_dff3_r|_dff_r:U0_dff_r|q'
+Slack : -5.227
+TNS   : -15.355
+
+Type  : Slow Model Setup 'Factorial_Top:U1_FACT|fifo:R_FIFO_1|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -4.618
+TNS   : -24.642
+
+Type  : Slow Model Setup 'DMAC_Top:U0_DMAC|fifo:dest_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -4.093
+TNS   : -19.061
+
+Type  : Slow Model Setup 'DMAC_Top:U0_DMAC|fifo:data_size_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -2.932
+TNS   : -14.018
+
+Type  : Slow Model Setup 'DMAC_Top:U0_DMAC|fifo:src_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -2.185
+TNS   : -9.321
+
+Type  : Slow Model Setup 'Factorial_Top:U1_FACT|fifo:N_FIFO|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -1.381
+TNS   : -5.418
+
+Type  : Slow Model Hold 'Factorial_Top:U1_FACT|multiplier:U0_multiplier|count[0]'
+Slack : -4.239
+TNS   : -194.069
+
+Type  : Slow Model Hold 'DMAC_Top:U0_DMAC|fifo:src_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -3.929
+TNS   : -21.868
+
+Type  : Slow Model Hold 'DMAC_Top:U0_DMAC|fifo:dest_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -3.864
+TNS   : -17.918
+
+Type  : Slow Model Hold 'Factorial_Top:U1_FACT|fifo:R_FIFO_1|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -3.844
+TNS   : -18.630
+
+Type  : Slow Model Hold 'DMAC_Top:U0_DMAC|fifo:data_size_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -3.649
+TNS   : -18.024
+
+Type  : Slow Model Hold 'Factorial_Top:U1_FACT|fifo:N_FIFO|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -3.537
+TNS   : -19.470
+
+Type  : Slow Model Hold 'Factorial_Top:U1_FACT|fifo:R_FIFO_2|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -3.070
+TNS   : -16.902
+
+Type  : Slow Model Hold 'clk'
+Slack : -2.736
+TNS   : -1128.473
+
+Type  : Slow Model Hold 'BUS:center_bus|bus_arbit:U0_arbit|state'
+Slack : -2.505
+TNS   : -21.580
+
+Type  : Slow Model Hold 'Factorial_Top:U1_FACT|fifo:N_FIFO|_dff3_r:state_dff3_r|_dff_r:U0_dff_r|q'
+Slack : -0.988
+TNS   : -2.555
+
+Type  : Slow Model Minimum Pulse Width 'clk'
+Slack : -1.380
+TNS   : -4095.380
+
+Type  : Slow Model Minimum Pulse Width 'BUS:center_bus|bus_arbit:U0_arbit|state'
+Slack : -1.210
+TNS   : -59.312
+
+Type  : Slow Model Minimum Pulse Width 'Factorial_Top:U1_FACT|fifo:N_FIFO|_dff3_r:state_dff3_r|_dff_r:U0_dff_r|q'
+Slack : -0.258
+TNS   : -4.644
+
+Type  : Slow Model Minimum Pulse Width 'DMAC_Top:U0_DMAC|fifo:data_size_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'DMAC_Top:U0_DMAC|fifo:dest_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'DMAC_Top:U0_DMAC|fifo:src_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'Factorial_Top:U1_FACT|fifo:N_FIFO|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'Factorial_Top:U1_FACT|fifo:R_FIFO_1|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'Factorial_Top:U1_FACT|fifo:R_FIFO_2|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'Factorial_Top:U1_FACT|multiplier:U0_multiplier|count[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Setup 'Factorial_Top:U1_FACT|multiplier:U0_multiplier|count[0]'
+Slack : -8.803
+TNS   : -330.501
+
+Type  : Fast Model Setup 'BUS:center_bus|bus_arbit:U0_arbit|state'
+Slack : -5.119
+TNS   : -59.847
+
+Type  : Fast Model Setup 'clk'
+Slack : -4.550
+TNS   : -9026.877
+
+Type  : Fast Model Setup 'Factorial_Top:U1_FACT|fifo:N_FIFO|_dff3_r:state_dff3_r|_dff_r:U0_dff_r|q'
+Slack : -2.294
+TNS   : -6.817
+
+Type  : Fast Model Setup 'Factorial_Top:U1_FACT|fifo:R_FIFO_2|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -1.677
+TNS   : -9.323
+
+Type  : Fast Model Setup 'Factorial_Top:U1_FACT|fifo:R_FIFO_1|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -1.249
+TNS   : -6.099
+
+Type  : Fast Model Setup 'DMAC_Top:U0_DMAC|fifo:dest_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -1.097
+TNS   : -3.972
+
+Type  : Fast Model Setup 'DMAC_Top:U0_DMAC|fifo:data_size_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -0.569
+TNS   : -1.727
+
+Type  : Fast Model Setup 'DMAC_Top:U0_DMAC|fifo:src_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -0.205
+TNS   : -0.361
+
+Type  : Fast Model Setup 'Factorial_Top:U1_FACT|fifo:N_FIFO|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.162
+TNS   : 0.000
+
+Type  : Fast Model Hold 'DMAC_Top:U0_DMAC|fifo:src_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -2.296
+TNS   : -12.742
+
+Type  : Fast Model Hold 'Factorial_Top:U1_FACT|multiplier:U0_multiplier|count[0]'
+Slack : -2.225
+TNS   : -68.140
+
+Type  : Fast Model Hold 'DMAC_Top:U0_DMAC|fifo:dest_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -2.209
+TNS   : -10.668
+
+Type  : Fast Model Hold 'Factorial_Top:U1_FACT|fifo:R_FIFO_1|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -2.187
+TNS   : -11.000
+
+Type  : Fast Model Hold 'DMAC_Top:U0_DMAC|fifo:data_size_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -2.082
+TNS   : -10.725
+
+Type  : Fast Model Hold 'Factorial_Top:U1_FACT|fifo:N_FIFO|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -2.024
+TNS   : -11.495
+
+Type  : Fast Model Hold 'Factorial_Top:U1_FACT|fifo:R_FIFO_2|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : -1.782
+TNS   : -10.113
+
+Type  : Fast Model Hold 'clk'
+Slack : -1.719
+TNS   : -2066.119
+
+Type  : Fast Model Hold 'BUS:center_bus|bus_arbit:U0_arbit|state'
+Slack : -0.982
+TNS   : -9.191
+
+Type  : Fast Model Hold 'Factorial_Top:U1_FACT|fifo:N_FIFO|_dff3_r:state_dff3_r|_dff_r:U0_dff_r|q'
+Slack : -0.427
+TNS   : -1.047
+
+Type  : Fast Model Minimum Pulse Width 'clk'
+Slack : -1.380
+TNS   : -4095.380
+
+Type  : Fast Model Minimum Pulse Width 'BUS:center_bus|bus_arbit:U0_arbit|state'
+Slack : -0.238
+TNS   : -5.586
+
+Type  : Fast Model Minimum Pulse Width 'Factorial_Top:U1_FACT|fifo:N_FIFO|_dff3_r:state_dff3_r|_dff_r:U0_dff_r|q'
+Slack : 0.180
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'DMAC_Top:U0_DMAC|fifo:data_size_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'DMAC_Top:U0_DMAC|fifo:dest_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'DMAC_Top:U0_DMAC|fifo:src_fifo|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'Factorial_Top:U1_FACT|fifo:N_FIFO|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'Factorial_Top:U1_FACT|fifo:R_FIFO_1|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'Factorial_Top:U1_FACT|fifo:R_FIFO_2|fifo_ns:U1_fifo_ns|next_state[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'Factorial_Top:U1_FACT|multiplier:U0_multiplier|count[0]'
+Slack : 0.500
+TNS   : 0.000
+
+------------------------------------------------------------

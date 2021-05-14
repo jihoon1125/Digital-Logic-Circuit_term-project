@@ -1,0 +1,20 @@
+Fitter Status : Successful - Tue Dec 05 23:49:33 2017
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
+Revision Name : multiplier
+Top-level Entity Name : multiplier
+Family : Cyclone IV GX
+Device : EP4CGX30CF23C6
+Timing Models : Final
+Total logic elements : 1,285 / 29,440 ( 4 % )
+    Total combinational functions : 1,283 / 29,440 ( 4 % )
+    Dedicated logic registers : 176 / 29,440 ( < 1 % )
+Total registers : 176
+Total pins : 250 / 307 ( 81 % )
+Total virtual pins : 0
+Total memory bits : 0 / 1,105,920 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 160 ( 0 % )
+Total GXB Receiver Channel PCS : 0 / 4 ( 0 % )
+Total GXB Receiver Channel PMA : 0 / 4 ( 0 % )
+Total GXB Transmitter Channel PCS : 0 / 4 ( 0 % )
+Total GXB Transmitter Channel PMA : 0 / 4 ( 0 % )
+Total PLLs : 0 / 6 ( 0 % )

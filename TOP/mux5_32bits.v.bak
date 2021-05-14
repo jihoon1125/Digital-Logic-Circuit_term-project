@@ -1,0 +1,23 @@
+module mux5_32bits(a, b, c, e, f, sel, d);//mux3 32bits module
+
+	input [31:0] a, b, c, e, f;//32-bit inputs
+	input [2:0] sel;//3-bit selection
+	output [31:0] d;//32-bit output
+	reg [31:0]d;//reg d
+	
+	always@ (a,b,c,sel) begin//case statements
+		case(sel) 
+		4'b0000 : d<=a;//if(sel==2'b00) d<=a
+		4'b0001 : d<=b;//if(sel==2'b10) S0_sel==1 and S1_sel==0, so d<=b
+		4'b0010 : d<=c;//if(sel==2'b01) S0_sel==0 and S1_sel==1, so d<=c
+		4'b0100 : d<=e;
+		4'b1000 : d<=f;
+		default: d=32'b0;//default
+		endcase//endcase
+	end
+	
+endmodule//endmodule
+
+	
+	
+	

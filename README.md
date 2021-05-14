@@ -25,11 +25,11 @@ Factorial , RAM hardware 그리고 direct memory access controller (DMAC)를 설
 
 ## Design details
 
-* ### RAM
+ ### RAM
 
  ![image](https://user-images.githubusercontent.com/67624104/118246593-22d3a580-b4dd-11eb-8008-a7d30cdc1008.png)
 
-* ### BUS
+ ### BUS
 
 ![image](https://user-images.githubusercontent.com/67624104/118246987-9ecded80-b4dd-11eb-9fde-045d37b2a7ed.png)
 
@@ -46,7 +46,7 @@ Factorial , RAM hardware 그리고 direct memory access controller (DMAC)를 설
 ---
 
 
-* ### DMAC
+ ### DMAC
 
 ![image](https://user-images.githubusercontent.com/67624104/118247955-b9ed2d00-b4de-11eb-9e2c-560239cd72bb.png)
 

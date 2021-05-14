@@ -46,7 +46,7 @@ Factorial , RAM hardware 그리고 direct memory access controller (DMAC)를 설
     * M0 grant일 때 M1_req가 1, M0_req가 0이 되면 M1 grant로 이동
     * M1 grant일 때 M1_req가 1 이거나 M0_req, M1_req가 모두 0이면 M1 grant 유지
     * M1 grant일 때 M1_req가 0이고 M0_req가 1이면 M0 grant로 이동
----
+
 
 
  ### DMAC
@@ -65,7 +65,7 @@ Factorial , RAM hardware 그리고 direct memory access controller (DMAC)를 설
   * MEM_WRITE: M_dout으로 write 후 data size가 0보다 크면 MEM_READ로, data size가 0이고 count가 0보다 크면 FIFO_POP, 둘 다 아니면 DONE으로 이동
   * DONE: 동작완료를 의미하는 interrupt signal 출력, op_clear신호 들어오면 IDLE state로 이동
 
----
+
 
 ### FACTORIAL
 
@@ -83,7 +83,7 @@ Factorial , RAM hardware 그리고 direct memory access controller (DMAC)를 설
   * FACTORIAL execution, R_FIFO_PUSH_1, 2: 연산의 종료를 의미하는 fac_op_done이 1이 될 때까지 연산진행 후 완료 되면 결과값 64bit를 두개의 32bit 값으로 나누어 R_FIFO에 push한다. R_FIFO read조건이 충족되면 즉시 MEM_WRITE_1 state로 이동한다. 충족되지 않았으면 STOP state에서 대기
   * MEM_WRITE_1,2 : 상위 32bit, 하위 32bit 값들을 S_dout으로 출력
 
----
+
 
 ### TOP
 

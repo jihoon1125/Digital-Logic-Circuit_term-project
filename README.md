@@ -17,7 +17,11 @@ Factorial , RAM hardware 그리고 direct memory access controller (DMAC)를 설
 
 ![image](https://user-images.githubusercontent.com/67624104/118246400-e0aa6400-b4dc-11eb-8985-a2166ba9803f.png)
 
----
+* 전체 시스템의 구성 요소는 크게 4가지로 DMAC, FACTORIAL, BUS, RAM그리고 testbench이다.
+* 본 시스템은 testbench로부터 MEMORY에 M개의 N-value(0 < N-value < 21)를 저장한다. Testbench에서 DMAC에게 op_start signal을 보내주면, DMAC는 MEMORY에 저장된 값을 설정된 opmode에 따라 FACTORIAL로 전송해준다. 이때 DMAC가 master가 된다.
+* FACTORIAL은 전송 받은 값을 내부에 있는 factorial_FIFO에 저장한다. DMAC interrupt signal이 발생하게 되면, testbench는 다시 bus master가 되어 FACTORIAL에게 op_start signal을 보낸다. * FATORIAL은 FIFO에 있는 N-value값을 POP하여 FIFO가 empty가 될 때까지 factorial 연산을 수행하고, FACTORIAL 내부에 있는 R_FIFO에 연산 결과를 result[63:32], result[31:0]순서대로 2 cycle에 걸쳐 값을 써 넣어주게 된다. FACTORIAL interrupt signal 이 발생하게 되면, testbench는 다시 bus master가 되어, result값을 MEMORY에 써 넣어 주기 위해 opmode를 설정하고, DMAC에게 op_start signal을 보낸다. 
+* DMAC는 설정된 opmode에 따라 FACTORIAL의 result RF값을 MEMORY로 전송하고 완료되면, DMAC interrupt signal을 발생하게 된다.
+* BUS는 수업 중 설계한 simple bus를 이용한다. BUS를 통해 block간 주고 받을 수 있는 정보는 address와 data 그리고 read/write 명령뿐이다. 따라서 hardware block들 간에 다양한 명령을 주고 받기 위해서는 미리 약속된 값들을 register (flip-flop array)라고 하는 특별한 공간에 쓰고 읽어야 한다. 예를 들어, DMAC block에게 연산을 시작하도록 하기 위해서는 OPERATION START register 에 0x1 값을 써야한다. 또한 이러한 register들을 선택하기 위해서는 address를 이용한다. 즉, memory-mapped IO방식으로 register들을 addressing하게 된다. 따라서, 각 block들의 register들은 offset address를 갖고 있다.
 
 ## Design details
 
